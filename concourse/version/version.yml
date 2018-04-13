@@ -3,8 +3,8 @@ platform: linux
 image_resource:
   type: docker-image
   source: 
-    repository: ellerbrock/alpine-bash-git
-  #  tag: '1.0.4'
+    repository: justdroppingby/alpine-bash-git
+    tag: '0.0.0'
 
 inputs:
   - name: repository
