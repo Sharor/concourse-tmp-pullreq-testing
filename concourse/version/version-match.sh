@@ -20,7 +20,8 @@ for version in $(git log master..HEAD --format=%B); do
   fi  
 done
 
-if [[ $counter -gt 0]] ; then     
+if [[ $counter -gt 0]] 
+  then     
     let minor=minor+1 
     let patch=0
 else 
