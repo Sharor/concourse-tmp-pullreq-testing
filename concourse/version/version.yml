@@ -15,5 +15,7 @@ run:
   args:
   - -exc
   - |
+    version=$(cat version/version)
     cd repository
-    git log
+    ../updatedversion/version>$(repository/concourse/version/version-match.sh
+    
