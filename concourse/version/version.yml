@@ -24,5 +24,7 @@ run:
     cd repository
     ls concourse
     ls concourse/version
+    ls ../updatedversion/
+    cat ../updatedversion/version
     ../updatedversion/version>$(./concourse/version/version-match.sh)
     
