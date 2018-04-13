@@ -18,7 +18,9 @@ run:
   args:
   - -exc
   - |
-    version=$(cat version/version)    
+    version=$(cat version/version)
+    ls
+    touch updatedversion/version
     cd repository
     ls concourse
     ls concourse/version
