@@ -19,12 +19,6 @@ run:
   - -exc
   - |
     version=$(cat version/version)
-    ls
-    touch updatedversion/version
     cd repository
-    ls concourse
-    ls concourse/version
-    ls ../updatedversion/
-    cat ../updatedversion/version
     ../updatedversion/version>$(./concourse/version/version-match.sh)
     
