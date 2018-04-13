@@ -10,12 +10,15 @@ inputs:
   - name: repository
   - name: version
 
+outputs: 
+  - name: updatedversion
+
 run:
   path: sh
   args:
   - -exc
   - |
-    version=$(cat version/version)
+    version=$(cat version/version)    
     cd repository
     ls concourse
     ls concourse/version
