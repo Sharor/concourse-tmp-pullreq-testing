@@ -17,5 +17,5 @@ run:
   - |
     version=$(cat version/version)
     cd repository
-    ../updatedversion/version>$(repository/concourse/version/version-match.sh
+    ../updatedversion/version>$(repository/concourse/version/version-match.sh)
     
