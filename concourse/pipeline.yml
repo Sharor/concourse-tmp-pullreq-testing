@@ -125,8 +125,4 @@ resources:
     gcloud_project: ((gcloud-project))
     gcloud_zone: ((gcloud-zone))
     gcloud_cluster: ((gcloud-cluster))
-<<<<<<< 03f9aeb7454dcee96961cc7d75205c0c8dc69e23
     namespace: default
-=======
-    namespace: default
->>>>>>> helm
