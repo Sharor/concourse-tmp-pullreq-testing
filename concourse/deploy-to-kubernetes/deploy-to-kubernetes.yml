@@ -19,4 +19,4 @@ run:
       export VERSION=$(cat version/version)
       sed -i "s/tag:.*/tag: $VERSION/g" repository/test/values.yaml
       helm package repository/test
-      mv idun-0.1.0.tgz chart
+      mv test-0.1.0.tgz chart
