@@ -50,6 +50,8 @@ jobs:
   - get: version
     passed: [bump-patch]
     trigger: true
+  - task: build-test
+    file: repository/concourse/create-release-image/create-release-image.yml
   - put: release-docker-image
     params:
       build: code
