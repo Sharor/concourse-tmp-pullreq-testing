@@ -121,23 +121,8 @@ resources:
 - name: helm-release-production
   type: helm
   source:
-    gcloud_auth: ((gcloud-production.auth))
-    gcloud_project: ((gcloud-production.project))
-    gcloud_zone: ((gcloud-production.zone))
-    gcloud_cluster: ((gcloud-production.cluster))
-    repos:
-    - name: private
-      url: https://((chart-repo.uri))
-
-
-
-- name: kubernetes-production
-  type: helm
-  source:
-    cluster_url: https://192.168.99.100:8443
-    namespace: production
-    cluster_ca: {{cluster-ca}}
-    admin_key: {{admin-key}}
-    admin_cert: {{admin-cert}}
-    release: idun
-    helm_init_server: true
+    gcloud_auth: ((gcloud-auth))
+    gcloud_project: ((gcloud-project))
+    gcloud_zone: ((gcloud-zone))
+    gcloud_cluster: ((gcloud-cluster))
+    namespace: default
