@@ -42,7 +42,20 @@ jobs:
       merge:
         method: squash   
 
-
+- name: create-release-image
+  public: true
+  plan:
+  - get: repository
+    passed: [bump-patch]
+  - get: version
+    passed: [bump-patch]
+    trigger: true
+  - put: release-docker-image
+    params:
+      build: code
+      cache: false
+      tag: version/version
+      tag_as_latest: true
 
 
 # Resources and resource types
@@ -81,9 +94,9 @@ resources:
     file: version
     private_key: ((concourse-token))
 
-#- name: release-docker-image
-#  type: docker-image
-#  source:
-#    username: {{docker-hub-username}}
-#    password: {{docker-hub-password}}
-#    repository: {{docker-repository}}
+- name: release-docker-image
+  type: docker-image
+  source:
+    username: {{docker-hub-username}}
+    password: {{docker-hub-password}}
+    repository: {{docker-repository}}
