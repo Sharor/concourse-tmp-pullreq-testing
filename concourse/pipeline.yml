@@ -24,26 +24,25 @@ jobs:
   public: true
   plan: 
   - get: version
+    params: {bump: patch}
   - get: repository
     passed: [build-test-backend]
     trigger: true
-  - task: version
-    file: repository/concourse/version/version.yml
-    
+  - put: version
+    params: {file: version/version}
+    on_success:
+      put: repository
+      params:
+        path: repository
+        status: success        
+  - put: repository
+    params:
+      path: repository
+      status: success
+      merge:
+        method: squash   
 
-#  - put: version
-#    params: {file: version/version}
-#    on_success:
-#      put: repository
-#      params:
-#        path: repository
-#        status: success        
-#  - put: repository
-#    params:
-#      path: repository
-#      status: success
-#      merge:
-#        method: squash   
+
 
 
 # Resources and resource types
@@ -80,7 +79,7 @@ resources:
     uri: git@github.com:Sharor/MuninnConfigs.git
     branch: version
     file: version
-    private_key: {{concourse-token}}
+    private_key: ((concourse-token))
 
 #- name: release-docker-image
 #  type: docker-image
