@@ -87,8 +87,9 @@ resource_types:
 - name: helm
   type: docker-image
   source:
-    repository: linkyard/concourse-helm-resource
-    tag: 2.7.2-4
+    repository: ilyasotkov/concourse-helm-resource
+    tag: 1.0.0
+
 
 resources:
 - name: repository
