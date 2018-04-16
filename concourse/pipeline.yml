@@ -59,6 +59,21 @@ jobs:
       tag: version/version
       tag_as_latest: true
 
+- name: update-production
+  public: true
+  plan: 
+  - get: repository
+    passed: [create-release-image]
+    trigger: true
+  - get: version
+    passed: [create-release-image]
+  - task: update-helm-chart
+    file: repository/Pipeline/deploy-to-kubernetes/deploy-to-kubernetes.yml
+  - put: kubernetes-production
+    params:
+      chart: chart/test-0.1.0.tgz
+      replace: true
+      image_tag: version/version
 
 # Resources and resource types
 #############################################################################################################
@@ -102,3 +117,12 @@ resources:
     username: {{docker-hub-username}}
     password: {{docker-hub-password}}
     repository: {{docker-repository}}
+
+- name: helm-release-production
+  type: helm
+  source:
+    gcloud_auth: ((gcloud-auth))
+    gcloud_project: ((gcloud-project))
+    gcloud_zone: ((gcloud-zone))
+    gcloud_cluster: ((gcloud-cluster))
+    namespace: default
