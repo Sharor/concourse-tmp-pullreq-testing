@@ -29,6 +29,7 @@ jobs:
     trigger: true
   - task: version
     file: repository/concourse/version/version.yml
+    
 
 #  - put: version
 #    params: {file: version/version}
