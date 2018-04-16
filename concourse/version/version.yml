@@ -3,12 +3,15 @@ platform: linux
 image_resource:
   type: docker-image
   source: 
-    repository: alpine/git
-    tag: '1.0.4'
+    repository: justdroppingby/alpine-bash-git
+    tag: '0.0.0'
 
 inputs:
   - name: repository
   - name: version
+
+outputs: 
+  - name: updatedversion
 
 run:
   path: sh
@@ -17,5 +20,5 @@ run:
   - |
     version=$(cat version/version)
     cd repository
-    ../updatedversion/version>$(concourse/version/version-match.sh)
+    ../updatedversion/version>$(./concourse/version/version-match.sh)
     
