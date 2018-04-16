@@ -68,8 +68,8 @@ jobs:
   - get: version
     passed: [create-release-image]
   - task: update-helm-chart
-    file: repository/Pipeline/deploy-to-kubernetes/deploy-to-kubernetes.yml
-  - put: kubernetes-production
+    file: repository/concourse/deploy-to-kubernetes/deploy-to-kubernetes.yml
+  - put: helm-release-production
     params:
       chart: chart/test-0.1.0.tgz
       replace: true
